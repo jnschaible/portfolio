@@ -1,0 +1,10 @@
+<small>
+    by <a href="{% url 'blog_author' post.author %}">{{ post.author }}</a> on 
+    {{ post.created_on.date }} &nbsp;|&nbsp;
+    Tags:&nbsp;
+    {% for category in post.categories.all %}
+    <a href="{% url 'blog_category' category.name %}">
+        {{ category.name }}
+    </a>&nbsp;
+    {% endfor %}
+</small>

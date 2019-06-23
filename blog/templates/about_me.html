@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+
+{% block page_content %}
+
+<div class="row">
+    <div class="col-md-7 offset-md-1">
+        <h1>{{ post.title }}</h1>
+        {% include 'post_info.html' %}
+        <p>{{ post.body | markdown | linebreaks }}</p>
+    </div>
+
+    {% include 'aside.html' %}
+</div>
+{% endblock %}

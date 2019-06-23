@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+
+{% block page_content %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<div class="row">
+    <div class="col-md-7 offset-md-1">
+        <h1>{{ post.title }}</h1>
+        {% include 'post_info.html' %}
+        <p>{{ post.body | markdown | linebreaks }}</p>
+        <h3>Leave a comment:</h3>
+        <form action="/blog/{{ post.pk }}/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.author }}
+            </div>
+            <div class="form-group">
+                {{ form.body }}
+            </div>
+            <div class="g-recaptcha" data-sitekey="{{ site_key }}"></div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        {% if comments %}
+            <h3>Comments:</h3>
+            {% for comment in comments %}
+            <p>
+                On {{comment.created_on.date }}&nbsp;
+                <b>{{ comment.author }}</b> wrote:
+            </p>
+            <p>{{ comment.body }}</p>
+            <hr>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    {% include 'aside.html' %}
+</div>
+{% endblock %}
