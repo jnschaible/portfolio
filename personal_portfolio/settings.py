@@ -25,7 +25,7 @@ SECRET_KEY = open('/var/www/project/secret_key', 'r').read()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [ 'shybull.net', 'localhost' ]
+ALLOWED_HOSTS = [ 'shybull.net', '100.27.38.183', 'localhost' ]
 
 
 # Application definition
