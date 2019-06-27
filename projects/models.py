@@ -19,6 +19,7 @@ class Project(models.Model):
 class Image(models.Model):
     title = models.CharField(max_length=100)
     url = models.CharField(max_length=100)
+    caption = models.CharField(max_length=140)
 
     def __str__(self):
         return self.title

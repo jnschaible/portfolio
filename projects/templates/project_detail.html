@@ -29,11 +29,13 @@
                     {% if image == project.images.all|first %}
                     <div class="carousel-item active">
                         <img src="{% static image.url %}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block"><span stlye="display: inline; background-color: black">{{ image.caption }}</span></div>
                     </div>
                     {% else %}
                         <div class="carousel-item">
                         <img src="{% static image.url %}" class="d-block w-100" alt="...">
-                        </div>
+                        <div class="carousel-caption d-none d-md-block"><span style="display: inline; background-color: black">{{ image.caption }}</span></div>
+                    </div>
                     {% endif %}
                 {% endfor %}
             </div>
